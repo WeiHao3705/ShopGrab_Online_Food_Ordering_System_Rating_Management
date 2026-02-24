@@ -1,33 +1,3 @@
--- ============================================
--- DROP TABLES (in reverse dependency order)
--- ============================================
-
--- Drop child tables first
-DROP TABLE IF EXISTS MenuRating;
-DROP TABLE IF EXISTS RestaurantRating;
-DROP TABLE IF EXISTS DeliveryRating;
-DROP TABLE IF EXISTS DeliveryService;
-DROP TABLE IF EXISTS Payment;
-DROP TABLE IF EXISTS OrderDetails;
-DROP TABLE IF EXISTS `Order`;
-DROP TABLE IF EXISTS MemberVoucher;
-DROP TABLE IF EXISTS Voucher;
-DROP TABLE IF EXISTS Menu;
-DROP TABLE IF EXISTS Restaurant;
-DROP TABLE IF EXISTS MemberMembership;
-DROP TABLE IF EXISTS Membership;
-DROP TABLE IF EXISTS Address;
-DROP TABLE IF EXISTS Member;
-
--- ============================================
--- CREATE TABLES
--- ============================================
-
--- ============================================
--- PARENT TABLES (No Foreign Keys)
--- ============================================
-
--- Member Table
 CREATE TABLE Member (
     memberID VARCHAR(20) PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
@@ -41,7 +11,6 @@ CREATE TABLE Member (
     account_status VARCHAR(20)
 );
 
--- Membership Table
 CREATE TABLE Membership (
     membershipID VARCHAR(20) PRIMARY KEY,
     membershipType VARCHAR(50),
@@ -49,7 +18,6 @@ CREATE TABLE Membership (
     validity_period INT
 );
 
--- Restaurant Table
 CREATE TABLE Restaurant (
     restaurantID VARCHAR(20) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -60,7 +28,6 @@ CREATE TABLE Restaurant (
     average_rating DECIMAL(3,2)
 );
 
--- Voucher Table
 CREATE TABLE Voucher (
     voucherID VARCHAR(20) PRIMARY KEY,
     voucher_type VARCHAR(50),
@@ -70,12 +37,6 @@ CREATE TABLE Voucher (
     status VARCHAR(20)
 );
 
-
--- ============================================
--- CHILD TABLES (Foreign Keys to Parent Tables)
--- ============================================
-
--- Address Table
 CREATE TABLE Address (
     addressID VARCHAR(20) PRIMARY KEY,
     address_line1 VARCHAR(255),
@@ -88,7 +49,6 @@ CREATE TABLE Address (
     FOREIGN KEY (memberID) REFERENCES Member(memberID)
 );
 
--- Menu Table
 CREATE TABLE Menu (
     menuID VARCHAR(20) PRIMARY KEY,
     item_name VARCHAR(100) NOT NULL,
@@ -103,7 +63,6 @@ CREATE TABLE Menu (
     FOREIGN KEY (restaurantID) REFERENCES Restaurant(restaurantID)
 );
 
--- Order Table
 CREATE TABLE `Order` (
     orderID VARCHAR(20) PRIMARY KEY,
     order_date DATE,
@@ -119,7 +78,6 @@ CREATE TABLE `Order` (
     FOREIGN KEY (memberID) REFERENCES Member(memberID)
 );
 
--- DeliveryService Table
 CREATE TABLE DeliveryService (
     deliveryServiceID VARCHAR(20) PRIMARY KEY,
     company_name VARCHAR(100),
@@ -129,10 +87,9 @@ CREATE TABLE DeliveryService (
     delivery_status VARCHAR(50),
     average_rating DECIMAL(3,2),
     orderID VARCHAR(20),
-    FOREIGN KEY (orderId) REFERENCES Order(orderID)
+    FOREIGN KEY (orderID) REFERENCES `Order`(orderID)
 );
 
--- Payment Table
 CREATE TABLE Payment (
     paymentID VARCHAR(20) PRIMARY KEY,
     payment_method VARCHAR(50),
@@ -143,32 +100,6 @@ CREATE TABLE Payment (
     FOREIGN KEY (orderID) REFERENCES `Order`(orderID)
 );
 
--- DeliveryRating Table (Junction Table)
-CREATE TABLE DeliveryRating (
-    delivery_rating_ID VARCHAR(20) PRIMARY KEY,
-    rating_score INT NOT NULL,
-    comment TEXT,
-    rating_date DATE NOT NULL,
-    deliveryServiceID VARCHAR(20) NOT NULL,
-    memberID VARCHAR(20) NOT NULL,
-    FOREIGN KEY (deliveryServiceID) REFERENCES DeliveryService(deliveryServiceID),
-    FOREIGN KEY (memberID) REFERENCES Member(memberID)
-);
-
--- MemberVoucher Table (Junction Table)
-CREATE TABLE MemberVoucher (
-    memberVoucherID VARCHAR(20),
-    redeemed_date DATE,
-    status VARCHAR(20),
-    PRIMARY KEY (memberVoucherID),
-    FOREIGN KEY (voucherID) REFERENCES Voucher(voucherID)
-);
-
--- ============================================
--- JUNCTION TABLES (Foreign Keys to Multiple Tables)
--- ============================================
-
--- MemberMembership Table (Junction Table)
 CREATE TABLE MemberMembership (
     memberMembershipID VARCHAR(20),
     memberID VARCHAR(20),
@@ -176,12 +107,21 @@ CREATE TABLE MemberMembership (
     start_date DATE,
     end_date DATE,
     status VARCHAR(20),
-    PRIMARY KEY (memberMembershipID, memberId, membershipID),
+    PRIMARY KEY (memberMembershipID, memberID, membershipID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
     FOREIGN KEY (membershipID) REFERENCES Membership(membershipID)
 );
 
--- OrderDetails Table (Junction Table)
+CREATE TABLE MemberVoucher (
+    memberVoucherID VARCHAR(20) PRIMARY KEY,
+    voucherID VARCHAR(20),
+    memberID VARCHAR(20),
+    redeemed_date DATE,
+    status VARCHAR(20),
+    FOREIGN KEY (voucherID) REFERENCES Voucher(voucherID),
+    FOREIGN KEY (memberID) REFERENCES Member(memberID)
+);
+
 CREATE TABLE OrderDetails (
     orderDetailsID VARCHAR(20),
     orderID VARCHAR(20),
@@ -194,7 +134,6 @@ CREATE TABLE OrderDetails (
     FOREIGN KEY (restaurantMenuID) REFERENCES Menu(menuID)
 );
 
--- MenuRating Table (Junction Table)
 CREATE TABLE MenuRating (
     menu_rating_ID VARCHAR(20),
     memberID VARCHAR(20),
@@ -207,15 +146,13 @@ CREATE TABLE MenuRating (
     FOREIGN KEY (restaurantMenuID) REFERENCES Menu(menuID)
 );
 
--- RestaurantRating Table (Junction Table)
-CREATE TABLE RestaurantRating (
-    restaurant_rating_ID VARCHAR(20) PRIMARY KEY,
-    memberID VARCHAR(20),
-    restaurantID VARCHAR(20),
-    rating_score INT,
+CREATE TABLE DeliveryRating (
+    delivery_rating_ID VARCHAR(20) PRIMARY KEY,
+    rating_score INT NOT NULL,
     comment TEXT,
-    rating_date DATE,
-    PRIMARY KEY (restaurant_rating_ID, memberID, restaurantID),
-    FOREIGN KEY (memberID) REFERENCES Member(memberID),
-    FOREIGN KEY (restaurantID) REFERENCES Restaurant(restaurantID)
+    rating_date DATE NOT NULL,
+    deliveryServiceID VARCHAR(20) NOT NULL,
+    memberID VARCHAR(20) NOT NULL,
+    FOREIGN KEY (deliveryServiceID) REFERENCES DeliveryService(deliveryServiceID),
+    FOREIGN KEY (memberID) REFERENCES Member(memberID)
 );
