@@ -64,18 +64,6 @@ CREATE TABLE Restaurant (
     CONSTRAINT chk_rating CHECK (average_rating BETWEEN 0 AND 5)
 );
 
-CREATE TABLE Address (
-    addressID INT PRIMARY KEY,
-    address_line1 VARCHAR(100) NOT NULL,
-    address_line2 VARCHAR(100),
-    city VARCHAR(50) NOT NULL,
-    postcode VARCHAR(10) NOT NULL,
-    state VARCHAR(50) NOT NULL,
-    country VARCHAR(50) NOT NULL,
-    memberID INT NOT NULL,
-    FOREIGN KEY (memberID) REFERENCES Member(memberID)
-);
-
 CREATE TABLE MemberMembership (
     memberMembershipID NUMBER PRIMARY KEY,
     memberID NUMBER NOT NULL,
@@ -120,10 +108,8 @@ CREATE TABLE Orders (
     total_amount NUMBER(10,2) NOT NULL CHECK (total_amount >= 0),
     delivery_method VARCHAR2(50) NOT NULL,
     memberVoucherID NUMBER,
-    addressID NUMBER NOT NULL,
     memberID NUMBER NOT NULL,
     FOREIGN KEY (memberVoucherID) REFERENCES MemberVoucher(memberVoucherID),
-    FOREIGN KEY (addressID) REFERENCES Address(addressID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
     CONSTRAINT chk_order_status CHECK (order_status IN ('Pending','Completed','Cancelled','On Delivery'))
 );
@@ -144,8 +130,8 @@ CREATE TABLE DeliveryService (
     delivery_charge NUMBER(10,2) NOT NULL CHECK (delivery_charge >= 0),
     pickup_time TIMESTAMP NOT NULL,
     delivery_time TIMESTAMP NOT NULL,
+    delivery_address VARCHAR2(255) NOT NULL,
     delivery_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
-    average_rating NUMBER(3,2) DEFAULT 0 CHECK (average_rating BETWEEN 0 AND 5),
     orderID NUMBER NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     CONSTRAINT chk_delivery_status CHECK (delivery_status IN ('Pending','On Delivery','Completed','Cancelled'))
@@ -154,7 +140,7 @@ CREATE TABLE DeliveryService (
 CREATE TABLE DeliveryRating (
     delivery_rating_id NUMBER PRIMARY KEY,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
-    comment_text CLOB,
+    comment CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
     orderID NUMBER NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
@@ -163,7 +149,7 @@ CREATE TABLE DeliveryRating (
 CREATE TABLE FoodRating (
     food_rating_ID NUMBER PRIMARY KEY,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
-    comment_text CLOB,
+    comment CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
     orderID NUMBER NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
