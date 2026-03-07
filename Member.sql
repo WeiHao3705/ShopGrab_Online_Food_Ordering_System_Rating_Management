@@ -1,3 +1,4 @@
+SET DEFINE OFF;
 insert into Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status) values (1, 'Sunny', 'Sesser', 'Male', '06-Jan-1977', 'qZ9(>%F`OpeD', 'ssesser0@topsy.com', '573-886-4013', '08-Feb-2024', 'Active');
 insert into Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status) values (2, 'Ase', 'Gebby', 'Male', '27-May-1962', 'bJ2`fbgRvC7k?n', 'agebby1@irs.gov', '511-837-8665', '23-Apr-2024', 'Active');
 insert into Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status) values (3, 'Betti', 'Liger', 'Male', '04-Mar-1994', 'zW0?q$$,"yNx', 'bliger2@state.tx.us', '184-588-1730', '19-Mar-2022', 'Inactive');
