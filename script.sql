@@ -16,7 +16,7 @@ DROP TABLE Restaurant;
 
 -- CREATE TABLE QUERY
 CREATE TABLE Membership (
-    membershipID INT PRIMARY KEY NOT NULL,
+    membershipID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     membershipType VARCHAR(50) NOT NULL,
     fee DECIMAL(10,2) NOT NULL,
     validity_period INT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE Membership (
 );
 
 CREATE TABLE Member (
-    memberID NUMBER PRIMARY KEY,
+    memberID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     first_name VARCHAR2(50) NOT NULL,
     last_name VARCHAR2(50) NOT NULL,
     gender VARCHAR2(10) NOT NULL,
@@ -41,19 +41,19 @@ CREATE TABLE Member (
 );
 
 CREATE TABLE Voucher (
-    voucherID NUMBER PRIMARY KEY,
+    voucherID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     voucher_type VARCHAR2(50) NOT NULL,
     discount_amount NUMBER(10,2) DEFAULT 0 NOT NULL,
     expiry_date DATE NOT NULL,
     min_spend_amount NUMBER(10,2) DEFAULT 0 NOT NULL,
     quantity NUMBER DEFAULT 0 NOT NULL,
-    CONSTRAINT chk_discount_amount CHECK (discount_amount >= 0),
+    CONSTRAINT chk_discount_amount CHECK (discount_amount > 0),
     CONSTRAINT chk_min_spend CHECK (min_spend_amount >= 0),
     CONSTRAINT chk_quantity CHECK (quantity >= 0)
 );
 
 CREATE TABLE Restaurant (
-    restaurantID NUMBER PRIMARY KEY,
+    restaurantID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     restaurant_name VARCHAR2(100) NOT NULL,
     restaurant_category VARCHAR2(50) NOT NULL,
     is_halal NUMBER(1) DEFAULT 0 NOT NULL,  -- 0 = false, 1 = true
@@ -65,9 +65,9 @@ CREATE TABLE Restaurant (
 );
 
 CREATE TABLE MemberMembership (
-    memberMembershipID NUMBER PRIMARY KEY,
-    memberID NUMBER NOT NULL,
-    membershipID NUMBER NOT NULL,
+    memberMembershipID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    memberID INT NOT NULL,
+    membershipID INT NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     status VARCHAR2(20) DEFAULT 'Active' NOT NULL,
@@ -77,9 +77,9 @@ CREATE TABLE MemberMembership (
 );
 
 CREATE TABLE MemberVoucher (
-    memberVoucherID NUMBER PRIMARY KEY,
-    voucherID NUMBER NOT NULL,
-    memberID NUMBER NOT NULL,
+    memberVoucherID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    voucherID INT NOT NULL,
+    memberID INT NOT NULL,
     redeemed_date DATE,
     status VARCHAR2(20) DEFAULT 'Available' NOT NULL,
     FOREIGN KEY (voucherID) REFERENCES Voucher(voucherID),
@@ -88,7 +88,7 @@ CREATE TABLE MemberVoucher (
 );
 
 CREATE TABLE MenuItem (
-    menuitemID NUMBER PRIMARY KEY,
+    menuitemID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     item_name VARCHAR2(100) NOT NULL,
     item_category VARCHAR2(50) NOT NULL,
     is_budget_meal NUMBER(1) DEFAULT 0 NOT NULL,   
@@ -96,70 +96,70 @@ CREATE TABLE MenuItem (
     type VARCHAR2(50) NOT NULL,
     price NUMBER(10,2) NOT NULL CHECK (price >= 0),
     availability NUMBER(1) DEFAULT 1 NOT NULL,      
-    restaurantID NUMBER NOT NULL,
+    restaurantID INT NOT NULL,
     FOREIGN KEY (restaurantID) REFERENCES Restaurant(restaurantID)
 );
 
 CREATE TABLE Orders (
-    orderID NUMBER PRIMARY KEY,
+    orderID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     order_date DATE DEFAULT SYSDATE NOT NULL,
     order_type VARCHAR2(50) NOT NULL,
     order_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
     total_amount NUMBER(10,2) NOT NULL CHECK (total_amount >= 0),
     delivery_method VARCHAR2(50) NOT NULL,
-    memberVoucherID NUMBER,
-    memberID NUMBER NOT NULL,
+    memberVoucherID INT,
+    memberID INT NOT NULL,
     FOREIGN KEY (memberVoucherID) REFERENCES MemberVoucher(memberVoucherID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
     CONSTRAINT chk_order_status CHECK (order_status IN ('Pending','Completed','Cancelled','On Delivery'))
 );
 
 CREATE TABLE Payment (
-    paymentID NUMBER PRIMARY KEY,
+    paymentID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     payment_method VARCHAR2(50) NOT NULL,
     payment_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
     payment_amount NUMBER(10,2) NOT NULL CHECK (payment_amount >= 0),
     payment_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID NUMBER NOT NULL,
+    orderID INT NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
 );
 
 CREATE TABLE DeliveryService (
-    deliveryServiceID NUMBER PRIMARY KEY,
+    deliveryServiceID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     company_name VARCHAR2(100) NOT NULL,
     delivery_charge NUMBER(10,2) NOT NULL CHECK (delivery_charge >= 0),
     pickup_time TIMESTAMP NOT NULL,
     delivery_time TIMESTAMP NOT NULL,
     delivery_address VARCHAR2(255) NOT NULL,
     delivery_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
-    orderID NUMBER NOT NULL,
+    orderID INT NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     CONSTRAINT chk_delivery_status CHECK (delivery_status IN ('Pending','On Delivery','Completed','Cancelled'))
 );
 
 CREATE TABLE DeliveryRating (
-    delivery_rating_id NUMBER PRIMARY KEY,
+    delivery_rating_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
     comment CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID NUMBER NOT NULL,
+    orderID INT NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
 );
 
 CREATE TABLE FoodRating (
-    food_rating_ID NUMBER PRIMARY KEY,
+    food_rating_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
     comment CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID NUMBER NOT NULL,
+    orderID INT NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
 );
 
 CREATE TABLE OrderDetails (
-    orderDetailsID NUMBER PRIMARY KEY,
-    orderID NUMBER NOT NULL,
-    menuitemID NUMBER NOT NULL,
-    quantity NUMBER NOT NULL CHECK (quantity > 0),
+    orderDetailsID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    orderID INT NOT NULL,
+    menuitemID INT NOT NULL,
+    quantity INT NOT NULL CHECK (quantity > 0),
     price_at_time_ordered NUMBER(10,2) NOT NULL CHECK (price_at_time_ordered >= 0),
     subtotal NUMBER(10,2) NOT NULL CHECK (subtotal >= 0),
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
