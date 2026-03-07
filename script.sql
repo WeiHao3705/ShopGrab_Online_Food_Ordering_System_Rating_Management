@@ -140,7 +140,7 @@ CREATE TABLE DeliveryService (
 CREATE TABLE DeliveryRating (
     delivery_rating_id NUMBER PRIMARY KEY,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
-    comment CLOB,
+    "comment" CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
     orderID NUMBER NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
@@ -149,7 +149,7 @@ CREATE TABLE DeliveryRating (
 CREATE TABLE FoodRating (
     food_rating_ID NUMBER PRIMARY KEY,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
-    comment CLOB,
+    "comment" CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
     orderID NUMBER NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
