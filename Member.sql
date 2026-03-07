@@ -136,3 +136,4 @@ insert into Member (memberid, first_name, last_name, gender, birth_date, passwor
 insert into Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status) values (135, 'Ula', 'McFadyen', 'Other', '21-Nov-1971', 'jC3|8>b6dE)ZMjTs', 'umcfadyen3q@friendfeed.com', '182-121-1456', '10-Jan-2025', 'Active');
 insert into Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status) values (136, 'Celestina', 'Essame', 'Female', '18-Feb-1977', 'nT5(QF$BM6J,', 'cessame3r@msn.com', '490-557-9691', '23-Oct-2023', 'Inactive');
 insert into Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status) values (137, 'Brandie', 'Hallet', 'Other', '10-Apr-1985', 'dK1\''lm56c{E=\S~', 'bhallet3s@last.fm', '159-767-6741', '18-Sep-2020', 'Active');
+commit;
