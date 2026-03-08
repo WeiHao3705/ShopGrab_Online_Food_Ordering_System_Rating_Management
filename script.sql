@@ -24,6 +24,8 @@ CREATE TABLE Membership (
     CONSTRAINT chk_validity CHECK (validity_period > 0)
 );
 
+-- Use triggers instead of CHECK constraints. Check birth_date and expiry_date
+
 CREATE TABLE Member (
     memberID VARCHAR2(6) PRIMARY KEY,
     first_name VARCHAR2(50) NOT NULL,
@@ -38,9 +40,7 @@ CREATE TABLE Member (
     CONSTRAINT chk_gender CHECK (gender IN ('Male','Female','Other')),
     CONSTRAINT chk_account_status CHECK (account_status IN ('Active','Inactive','Suspended')),
     CONSTRAINT chk_email_format CHECK (REGEXP_LIKE(email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')),
-    CONSTRAINT chk_phone_format CHECK (REGEXP_LIKE(phoneNo, '^\+?[0-9]{7,15}$')),
-    -- considering whether to add a age restriction on this application
-    CONSTRAINT chk_birth_date CHECK (birth_date <= SYSDATE - INTERVAL '12' YEAR)
+    CONSTRAINT chk_phone_format CHECK (REGEXP_LIKE(phoneNo, '^\+?[0-9]{7,15}$'))
 );
 
 CREATE TABLE Voucher (
@@ -53,8 +53,7 @@ CREATE TABLE Voucher (
     quantity NUMBER DEFAULT 0 NOT NULL,
     CONSTRAINT chk_discount_amount CHECK (discount_amount >= 0),
     CONSTRAINT chk_min_spend CHECK (min_spend_amount >= 0),
-    CONSTRAINT chk_quantity CHECK (quantity >= 0),
-    CONSTRAINT chk_expiry_date CHECK (expiry_date > SYSDATE)
+    CONSTRAINT chk_quantity CHECK (quantity >= 0)
 );
 
 CREATE TABLE Restaurant (
@@ -67,7 +66,7 @@ CREATE TABLE Restaurant (
     average_rating NUMBER(3,2) DEFAULT 0,
     CONSTRAINT chk_status CHECK (current_status IN ('Open','Closed','Suspended')),
     CONSTRAINT chk_rating CHECK (average_rating BETWEEN 0 AND 5),
-    CONSTRAINT chk_halal CHECK (is_halal IN (0,1)),
+    CONSTRAINT chk_halal CHECK (is_halal IN (0,1))
     -- considering whether to add the restaurant_category constraint
 );
 
@@ -93,7 +92,6 @@ CREATE TABLE MemberVoucher (
     FOREIGN KEY (voucherID) REFERENCES Voucher(voucherID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
     CONSTRAINT chk_voucher_status CHECK (status IN ('Available','Redeemed','Expired')),
-    CONSTRAINT chk_redeemed_date CHECK (redeemed_date IS NULL OR redeemed_date <= SYSDATE),
     CONSTRAINT chk_voucher_availability CHECK (
         (status = 'Available' AND redeemed_date IS NULL) OR
         (status = 'Redeemed' AND redeemed_date IS NOT NULL) OR
