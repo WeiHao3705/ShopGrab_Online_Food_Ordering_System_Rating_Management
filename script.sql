@@ -16,7 +16,7 @@ DROP TABLE Restaurant CASCADE CONSTRAINTS;
 -- CREATE TABLE QUERIES
 
 CREATE TABLE Membership (
-    membershipID NUMBER PRIMARY KEY,
+    membershipID VARCHAR2(6) PRIMARY KEY,
     membershipType VARCHAR2(50) NOT NULL UNIQUE,
     fee NUMBER(10,2) NOT NULL,
     validity_period NUMBER NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE Membership (
 );
 
 CREATE TABLE Member (
-    memberID NUMBER PRIMARY KEY,
+    memberID VARCHAR2(6) PRIMARY KEY,
     first_name VARCHAR2(50) NOT NULL,
     last_name VARCHAR2(50) NOT NULL,
     gender VARCHAR2(10) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE Member (
 );
 
 CREATE TABLE Voucher (
-    voucherID NUMBER PRIMARY KEY,
+    voucherID VARCHAR2(6) PRIMARY KEY,
     voucher_code VARCHAR2(50) NOT NULL UNIQUE,
     voucher_type VARCHAR2(50) NOT NULL,
     discount_amount NUMBER(10,2) DEFAULT 0 NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE Voucher (
 );
 
 CREATE TABLE Restaurant (
-    restaurantID NUMBER PRIMARY KEY,
+    restaurantID VARCHAR2(6) PRIMARY KEY,
     restaurant_name VARCHAR2(100) NOT NULL,
     restaurant_category VARCHAR2(50) NOT NULL,
     is_halal NUMBER(1) DEFAULT 0 NOT NULL,  
@@ -72,9 +72,9 @@ CREATE TABLE Restaurant (
 );
 
 CREATE TABLE MemberMembership (
-    memberMembershipID NUMBER PRIMARY KEY,
-    memberID NUMBER NOT NULL,
-    membershipID NUMBER NOT NULL,
+    memberMembershipID VARCHAR2(6) PRIMARY KEY,
+    memberID VARCHAR2(6) NOT NULL,
+    membershipID VARCHAR2(6) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     status VARCHAR2(20) DEFAULT 'Active' NOT NULL,
@@ -85,9 +85,9 @@ CREATE TABLE MemberMembership (
 );
 
 CREATE TABLE MemberVoucher (
-    memberVoucherID NUMBER PRIMARY KEY,
-    voucherID NUMBER NOT NULL,
-    memberID NUMBER NOT NULL,
+    memberVoucherID VARCHAR2(6) PRIMARY KEY,
+    voucherID VARCHAR2(6) NOT NULL,
+    memberID VARCHAR2(6) NOT NULL,
     redeemed_date DATE,
     status VARCHAR2(20) DEFAULT 'Available' NOT NULL,
     FOREIGN KEY (voucherID) REFERENCES Voucher(voucherID),
@@ -103,7 +103,7 @@ CREATE TABLE MemberVoucher (
 );
 
 CREATE TABLE MenuItem (
-    menuitemID NUMBER PRIMARY KEY,
+    menuitemID VARCHAR2(6) PRIMARY KEY,
     item_name VARCHAR2(100) NOT NULL,
     item_category VARCHAR2(50) NOT NULL,
     is_budget_meal NUMBER(1) DEFAULT 0 NOT NULL,   
@@ -111,7 +111,7 @@ CREATE TABLE MenuItem (
     type VARCHAR2(50) NOT NULL,
     price NUMBER(10,2) NOT NULL CHECK (price >= 0),
     availability NUMBER(1) DEFAULT 1 NOT NULL,      
-    restaurantID NUMBER NOT NULL,
+    restaurantID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (restaurantID) REFERENCES Restaurant(restaurantID),
     CONSTRAINT chk_budget_meal CHECK (is_budget_meal IN (0,1)),
     CONSTRAINT chk_super_deal CHECK (is_super_deal IN (0,1)),
@@ -120,13 +120,13 @@ CREATE TABLE MenuItem (
 );
 
 CREATE TABLE Orders (
-    orderID NUMBER PRIMARY KEY,
+    orderID VARCHAR2(6) PRIMARY KEY,
     order_date DATE DEFAULT SYSDATE NOT NULL,
     order_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
     total_amount NUMBER(10,2) NOT NULL CHECK (total_amount >= 0),
     delivery_method VARCHAR2(50) NOT NULL,
-    memberVoucherID NUMBER,
-    memberID NUMBER NOT NULL,
+    memberVoucherID VARCHAR2(6),
+    memberID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (memberVoucherID) REFERENCES MemberVoucher(memberVoucherID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
     CONSTRAINT chk_order_status CHECK (order_status IN ('Pending','Completed','Cancelled','On Delivery')),
@@ -135,53 +135,53 @@ CREATE TABLE Orders (
 );
 
 CREATE TABLE Payment (
-    paymentID NUMBER PRIMARY KEY,
+    paymentID VARCHAR2(6) PRIMARY KEY,
     payment_method VARCHAR2(50) NOT NULL,
     payment_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
     payment_amount NUMBER(10,2) NOT NULL CHECK (payment_amount >= 0),
     payment_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID NUMBER NOT NULL UNIQUE,
+    orderID VARCHAR2(6) NOT NULL UNIQUE,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     CONSTRAINT chk_payment_status CHECK (payment_status IN ('Pending','Completed','Failed','Refunded')),
     CONSTRAINT chk_payment_method CHECK (payment_method IN ('Credit Card','Debit Card','E-Wallet','Cash'))
 );
 
 CREATE TABLE DeliveryService (
-    deliveryServiceID NUMBER PRIMARY KEY,
+    deliveryServiceID VARCHAR2(6) PRIMARY KEY,
     company_name VARCHAR2(100) NOT NULL,
     delivery_charge NUMBER(10,2) NOT NULL CHECK (delivery_charge >= 0),
     pickup_time TIMESTAMP NOT NULL,
     delivery_time TIMESTAMP NOT NULL,
     delivery_address VARCHAR2(255) NOT NULL,
     delivery_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
-    orderID NUMBER NOT NULL,
+    orderID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     CONSTRAINT chk_delivery_status CHECK (delivery_status IN ('Pending','On Delivery','Completed','Cancelled')),
     CONSTRAINT chk_delivery_times CHECK (delivery_time > pickup_time)
 );
 
 CREATE TABLE DeliveryRating (
-    delivery_rating_id NUMBER PRIMARY KEY,
+    delivery_rating_id VARCHAR2(6) PRIMARY KEY,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
     "comment" CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID NUMBER NOT NULL UNIQUE,
+    orderID VARCHAR2(6) NOT NULL UNIQUE,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
 );
 
 CREATE TABLE FoodRating (
-    food_rating_ID NUMBER PRIMARY KEY,
+    food_rating_ID VARCHAR2(6) PRIMARY KEY,
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
     "comment" CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID NUMBER NOT NULL UNIQUE,
+    orderID VARCHAR2(6) NOT NULL UNIQUE,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID)
 );
 
 CREATE TABLE OrderDetails (
-    orderDetailsID NUMBER PRIMARY KEY,
-    orderID NUMBER NOT NULL UNIQUE,
-    menuitemID NUMBER NOT NULL,
+    orderDetailsID VARCHAR2(6) PRIMARY KEY,
+    orderID VARCHAR2(6) NOT NULL UNIQUE,
+    menuitemID VARCHAR2(6) NOT NULL,
     quantity NUMBER NOT NULL CHECK (quantity > 0),
     price_at_time_ordered NUMBER(10,2) NOT NULL CHECK (price_at_time_ordered >= 0),
     subtotal NUMBER(10,2) NOT NULL CHECK (subtotal >= 0),
