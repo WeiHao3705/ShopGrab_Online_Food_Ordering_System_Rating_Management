@@ -45,12 +45,13 @@ CREATE TABLE Member (
 
 CREATE TABLE Voucher (
     voucherID NUMBER PRIMARY KEY,
-    voucher_type VARCHAR2(50) NOT NULL UNIQUE,
+    voucher_code VARCHAR2(50) NOT NULL UNIQUE,
+    voucher_type VARCHAR2(50) NOT NULL,
     discount_amount NUMBER(10,2) DEFAULT 0 NOT NULL,
     expiry_date DATE NOT NULL,
     min_spend_amount NUMBER(10,2) DEFAULT 0 NOT NULL,
     quantity NUMBER DEFAULT 0 NOT NULL,
-    CONSTRAINT chk_discount_amount CHECK (discount_amount > 0),
+    CONSTRAINT chk_discount_amount CHECK (discount_amount >= 0),
     CONSTRAINT chk_min_spend CHECK (min_spend_amount >= 0),
     CONSTRAINT chk_quantity CHECK (quantity >= 0),
     CONSTRAINT chk_expiry_date CHECK (expiry_date > SYSDATE)
