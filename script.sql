@@ -130,8 +130,7 @@ CREATE TABLE Orders (
     FOREIGN KEY (memberVoucherID) REFERENCES MemberVoucher(memberVoucherID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
     CONSTRAINT chk_order_status CHECK (order_status IN ('Pending','Completed','Cancelled','On Delivery')),
-    CONSTRAINT chk_delivery_method CHECK (delivery_method IN ('Delivery','Self-Pickup')),
-
+    CONSTRAINT chk_delivery_method CHECK (delivery_method IN ('Delivery','Self-Pickup'))
 );
 
 CREATE TABLE Payment (
@@ -165,8 +164,8 @@ CREATE TABLE DeliveryRating (
     rating_score NUMBER NOT NULL CHECK (rating_score BETWEEN 1 AND 5),
     "comment" CLOB,
     rating_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID VARCHAR2(6) NOT NULL UNIQUE,
-    FOREIGN KEY (orderID) REFERENCES Orders(orderID)
+    deliveryServiceID VARCHAR2(6) NOT NULL UNIQUE,
+    FOREIGN KEY (deliveryServiceID) REFERENCES DeliveryService(deliveryServiceID)
 );
 
 CREATE TABLE FoodRating (
@@ -180,7 +179,7 @@ CREATE TABLE FoodRating (
 
 CREATE TABLE OrderDetails (
     orderDetailsID VARCHAR2(6) PRIMARY KEY,
-    orderID VARCHAR2(6) NOT NULL UNIQUE,
+    orderID VARCHAR2(6) NOT NULL,
     menuitemID VARCHAR2(6) NOT NULL,
     quantity NUMBER NOT NULL CHECK (quantity > 0),
     price_at_time_ordered NUMBER(10,2) NOT NULL CHECK (price_at_time_ordered >= 0),
