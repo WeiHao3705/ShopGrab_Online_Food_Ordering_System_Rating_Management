@@ -40,7 +40,7 @@ CREATE TABLE Member (
     CONSTRAINT chk_gender CHECK (gender IN ('Male','Female','Other')),
     CONSTRAINT chk_account_status CHECK (account_status IN ('Active','Inactive','Suspended')),
     CONSTRAINT chk_email_format CHECK (REGEXP_LIKE(email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')),
-    CONSTRAINT chk_phone_format CHECK (REGEXP_LIKE(phoneNo, '^\+?[0-9]{7,15}$'))
+    CONSTRAINT chk_phone_format CHECK (REGEXP_LIKE(phoneNo, '^[0-9]{3}-[0-9]{3}-[0-9]{4}$'))
 );
 
 CREATE TABLE Voucher (
