@@ -140,7 +140,7 @@ CREATE TABLE Payment (
     orderID VARCHAR2(6) NOT NULL UNIQUE,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     CONSTRAINT chk_payment_status CHECK (payment_status IN ('Pending','Completed','Failed','Refunded')),
-    CONSTRAINT chk_payment_method CHECK (payment_method IN ('Credit Card','Debit Card','E-Wallet','Cash'))
+    CONSTRAINT chk_payment_method CHECK (payment_method IN ('Credit / Debit Card','Touch ''n Go','COD', 'GrabPay', 'ShopeePay', 'Boost', 'FPX'))
 );
 
 CREATE TABLE DeliveryService (
