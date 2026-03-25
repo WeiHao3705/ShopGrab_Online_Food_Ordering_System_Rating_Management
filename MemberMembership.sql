@@ -25,7 +25,6 @@ INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM099', 'M044', 'MS007', '21-Aug-2023', '21-Sep-2023', 'Expired');
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM100', 'M066', 'MS006', '02-Mar-2022', '02-Mar-2023', 'Expired');
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM101', 'M052', 'MS006', '05-Oct-2025', '05-Oct-2026', 'Active');
-INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM101', 'M052', 'MS006', '05-Oct-2025', '05-Oct-2026', 'Active');
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM102', 'M004', 'MS008', '07-May-2021', '07-Aug-2021', 'Expired');
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM103', 'M041', 'MS009', '30-Aug-2025', '30-Aug-2026', 'Active');
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM104', 'M066', 'MS009', '19-Feb-2022', '19-Feb-2023', 'Cancelled');

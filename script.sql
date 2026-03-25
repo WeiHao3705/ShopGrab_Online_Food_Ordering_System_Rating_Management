@@ -108,6 +108,7 @@ CREATE TABLE MenuItem (
     is_super_deal NUMBER(1) DEFAULT 0 NOT NULL,    
     type VARCHAR2(50) NOT NULL,
     price NUMBER(10,2) NOT NULL CHECK (price >= 0),
+    stock_quantity NUMBER NOT NULL CHECK (stock_quantity >= 0),
     availability NUMBER(1) DEFAULT 1 NOT NULL,      
     restaurantID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (restaurantID) REFERENCES Restaurant(restaurantID),
