@@ -686,7 +686,7 @@ INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, 
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV088', 'V011', 'M029', '14-Aug-20', 'Redeemed');
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV089', 'V004', 'M054', '', 'Available');
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV090', 'V011', 'M027', '11-Feb-22', 'Redeemed');
-INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV091', 'V004', 'M018', '5-Mar-25', 'Redeemed');
+INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV091', 'V004', 'M052', '5-Mar-25', 'Redeemed');
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV092', 'V010', 'M027', '', 'Available');
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV093', 'V004', 'M010', '', 'Available');
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV094', 'V010', 'M062', '20-Sep-24', 'Redeemed');
@@ -1245,7 +1245,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O120', 'MV171', 'M045', '6-Jul-21', 'Completed', '17.52', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O121', 'MV067', 'M025', '22-Dec-24', 'Cancelled', '29.4', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O122', '', 'M052', '17-Feb-21', 'Completed', '127.4', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O123', 'MV091', 'M018', '5-Mar-25', 'Completed', '44.5', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O123', 'MV091', 'M052', '5-Mar-25', 'Completed', '44.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O124', '', 'M030', '2-Oct-23', 'Completed', '28.76', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O125', '', 'M001', '16-Jan-20', 'Cancelled', '110.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O126', '', 'M030', '15-Aug-21', 'Cancelled', '109.2', 'Self-Pickup');
@@ -2380,7 +2380,7 @@ INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_d
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR038', '5', 'Best meal I''ve had all week!', TO_DATE('2021-12-24 02:24:40', 'YYYY_MM_DD HH24:MI:SS'), 'DS057');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR039', '4', 'Missing my drink.', TO_DATE('2022-10-17 14:35:21', 'YYYY_MM_DD HH24:MI:SS'), 'DS058');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR040', '5', 'Fast and fresh.', TO_DATE('2022-02-18 03:15:35', 'YYYY_MM_DD HH24:MI:SS'), 'DS059');
-INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR041', '5', 'Terrible experience.', TO_DATE('2023-10-06 07:37:16', 'YYYY_MM_DD HH24:MI:SS'), 'DS060');
+INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR041', '1', 'Terrible experience.', TO_DATE('2023-10-06 07:37:16', 'YYYY_MM_DD HH24:MI:SS'), 'DS060');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR042', '5', 'Food arrived piping hot!', TO_DATE('2020-06-01 06:53:54', 'YYYY_MM_DD HH24:MI:SS'), 'DS061');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR043', '5', 'Best meal I''ve had all week!', TO_DATE('2021-03-18 12:50:44', 'YYYY_MM_DD HH24:MI:SS'), 'DS063');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR044', '3', 'Average.', TO_DATE('2024-07-03 06:05:20', 'YYYY_MM_DD HH24:MI:SS'), 'DS065');
@@ -2513,8 +2513,8 @@ INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_d
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR171', '5', 'Perfect as always!', TO_DATE('2020-02-17 15:40:37', 'YYYY_MM_DD HH24:MI:SS'), 'DS254');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR172', '5', 'Perfect as always!', TO_DATE('2024-09-13 18:45:03', 'YYYY_MM_DD HH24:MI:SS'), 'DS255');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR173', '3', 'Arrived much faster than expected.', TO_DATE('2023-11-19 09:29:10', 'YYYY_MM_DD HH24:MI:SS'), 'DS259');
-INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR174', '2', 'Food arrived piping hot!', TO_DATE('2025-11-10 10:11:27', 'YYYY_MM_DD HH24:MI:SS'), 'DS260');
-INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR175', '4', 'Food was cold by the time it arrived.', TO_DATE('2020-09-06 09:34:26', 'YYYY_MM_DD HH24:MI:SS'), 'DS261');
+INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR174', '2', 'Terrible experience.', TO_DATE('2025-11-10 10:11:27', 'YYYY_MM_DD HH24:MI:SS'), 'DS260');
+INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR175', '2', 'Food was cold by the time it arrived.', TO_DATE('2020-09-06 09:34:26', 'YYYY_MM_DD HH24:MI:SS'), 'DS261');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR176', '5', 'Fast and fresh.', TO_DATE('2021-10-20 00:45:18', 'YYYY_MM_DD HH24:MI:SS'), 'DS265');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR177', '3', 'Okay, nothing special.', TO_DATE('2020-10-09 16:43:41', 'YYYY_MM_DD HH24:MI:SS'), 'DS266');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR178', '4', 'Perfect as always!', TO_DATE('2023-02-16 10:41:13', 'YYYY_MM_DD HH24:MI:SS'), 'DS267');
