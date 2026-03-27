@@ -151,7 +151,7 @@ CREATE TABLE DeliveryService (
     deliveryServiceID VARCHAR2(6) PRIMARY KEY,
     company_name VARCHAR2(100) NOT NULL,
     delivery_charge NUMBER(10,2) NOT NULL CHECK (delivery_charge >= 0),
-    pickup_time TIMESTAMP NOT NULL,
+    pickup_time TIMESTAMP,
     delivery_time TIMESTAMP,
     delivery_address VARCHAR2(255) NOT NULL,
     delivery_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
