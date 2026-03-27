@@ -286,17 +286,17 @@ INSERT INTO Member (memberid, first_name, last_name, gender, birth_date, passwor
 
 -- ===== BEGIN voucher.sql =====
 
-INSERT INTO Voucher VALUES ('V001', 'WELCOME10', 'Percentage', 10, DATE '2026-12-31', 30, 200);
-INSERT INTO Voucher VALUES ('V002', 'SUMMER15', 'Percentage', 15, DATE '2026-08-31', 50, 150);
-INSERT INTO Voucher VALUES ('V003', 'NEWUSER20', 'Percentage', 20, DATE '2027-12-31', 40, 120);
+INSERT INTO Voucher VALUES ('V001', 'WELCOME10', 'Percentage', 10, DATE '2026-12-31', 15, 200);
+INSERT INTO Voucher VALUES ('V002', 'SUMMER15', 'Percentage', 15, DATE '2026-08-31', 10, 150);
+INSERT INTO Voucher VALUES ('V003', 'NEWUSER20', 'Percentage', 20, DATE '2027-12-31', 12, 120);
 INSERT INTO Voucher VALUES ('V004', 'FITNESS5', 'Flat', 5, DATE '2027-03-31', 20, 180);
-INSERT INTO Voucher VALUES ('V005', 'VIP25', 'Percentage', 25, DATE '2026-10-15', 100, 80);
-INSERT INTO Voucher VALUES ('V006', 'SPRING12', 'Percentage', 12, DATE '2027-05-31', 45, 140);
-INSERT INTO Voucher VALUES ('V007', 'HOLIDAY30', 'Percentage', 30, DATE '2026-12-25', 120, 60);
-INSERT INTO Voucher VALUES ('V008', 'LOYALTY10', 'Flat', 10, DATE '2024-01-01', 35, 31);
-INSERT INTO Voucher VALUES ('V009', 'FLASH18', 'Percentage', 18, DATE '2025-09-01', 55, 17);
-INSERT INTO Voucher VALUES ('V010', 'GYMSTART15', 'Percentage', 15, DATE '2026-06-30', 60, 130);
-INSERT INTO Voucher VALUES ('V011', 'FREESHIP', 'Free Delivery', 0, DATE '2027-11-30', 25, 160);
+INSERT INTO Voucher VALUES ('V005', 'VIP25', 'Percentage', 25, DATE '2026-10-15', 30, 80);
+INSERT INTO Voucher VALUES ('V006', 'SPRING12', 'Percentage', 12, DATE '2027-05-31', 14, 140);
+INSERT INTO Voucher VALUES ('V007', 'HOLIDAY30', 'Percentage', 30, DATE '2026-12-25', 25, 60);
+INSERT INTO Voucher VALUES ('V008', 'LOYALTY10', 'Flat', 10, DATE '2024-01-01', 16, 31);
+INSERT INTO Voucher VALUES ('V009', 'FLASH18', 'Percentage', 18, DATE '2025-09-01', 25, 17);
+INSERT INTO Voucher VALUES ('V010', 'GYMSTART15', 'Percentage', 15, DATE '2026-06-30', 10, 130);
+INSERT INTO Voucher VALUES ('V011', 'FREESHIP', 'Free Delivery', 0, DATE '2027-11-30', 8, 160);
 
 -- ===== END voucher.sql =====
 
