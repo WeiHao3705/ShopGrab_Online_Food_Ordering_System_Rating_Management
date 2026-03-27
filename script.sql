@@ -138,7 +138,7 @@ CREATE TABLE Payment (
     payment_status VARCHAR2(50) DEFAULT 'Pending' NOT NULL,
     payment_amount NUMBER(10,2) NOT NULL CHECK (payment_amount >= 0),
     payment_date DATE DEFAULT SYSDATE NOT NULL,
-    orderID VARCHAR2(6) NOT NULL UNIQUE,
+    orderID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     CONSTRAINT chk_payment_status CHECK (payment_status IN ('Pending','Completed','Failed','Refunded')),
     CONSTRAINT chk_payment_method CHECK (payment_method IN ('Credit / Debit Card','Touch ''n Go','COD', 'GrabPay', 'ShopeePay', 'Boost', 'FPX'))
