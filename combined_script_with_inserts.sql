@@ -131,7 +131,7 @@ CREATE TABLE Orders (
     memberID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (memberVoucherID) REFERENCES MemberVoucher(memberVoucherID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
-    CONSTRAINT chk_order_status CHECK (order_status IN ('Pending','Completed','Cancelled','On Delivery')),
+    CONSTRAINT chk_order_status CHECK (order_status IN ('Pending','Preparing', 'Completed','Cancelled','On Delivery')),
     CONSTRAINT chk_delivery_method CHECK (delivery_method IN ('Delivery','Self-Pickup'))
 );
 
