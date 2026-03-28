@@ -128,7 +128,7 @@ CREATE TABLE Orders (
     memberID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (memberVoucherID) REFERENCES MemberVoucher(memberVoucherID),
     FOREIGN KEY (memberID) REFERENCES Member(memberID),
-    CONSTRAINT chk_order_status CHECK (order_status IN ('Pending','Completed','Cancelled','On Delivery')),
+    CONSTRAINT chk_order_status CHECK (order_status IN ('Pending', 'Preparing','Completed','Cancelled','On Delivery')),
     CONSTRAINT chk_delivery_method CHECK (delivery_method IN ('Delivery','Self-Pickup'))
 );
 
@@ -140,7 +140,7 @@ CREATE TABLE Payment (
     payment_date DATE DEFAULT SYSDATE NOT NULL,
     orderID VARCHAR2(6) NOT NULL,
     FOREIGN KEY (orderID) REFERENCES Orders(orderID),
-    CONSTRAINT chk_payment_status CHECK (payment_status IN ('Pending','Preparing', 'Completed','Failed','Refunded')),
+    CONSTRAINT chk_payment_status CHECK (payment_status IN ('Pending', 'Completed','Failed','Refunded')),
     CONSTRAINT chk_payment_method CHECK (payment_method IN ('Credit / Debit Card','Touch ''n Go','COD', 'GrabPay', 'ShopeePay', 'Boost', 'FPX'))
 );
 
