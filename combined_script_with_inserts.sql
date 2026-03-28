@@ -1,7 +1,3 @@
-
--- ===== BEGIN script.sql =====
-
--- Drop table if it already exists
 DROP TABLE OrderDetails CASCADE CONSTRAINTS;
 DROP TABLE DeliveryRating CASCADE CONSTRAINTS;
 DROP TABLE FoodRating CASCADE CONSTRAINTS;
@@ -16,8 +12,6 @@ DROP TABLE Member CASCADE CONSTRAINTS;
 DROP TABLE Membership CASCADE CONSTRAINTS;
 DROP TABLE Restaurant CASCADE CONSTRAINTS;
 
--- CREATE TABLE QUERIES
-
 CREATE TABLE Membership (
     membershipID VARCHAR2(6) PRIMARY KEY,
     membershipType VARCHAR2(50) NOT NULL UNIQUE,
@@ -26,8 +20,6 @@ CREATE TABLE Membership (
     CONSTRAINT chk_fee CHECK (fee >= 0),
     CONSTRAINT chk_validity CHECK (validity_period > 0)
 );
-
--- Use triggers instead of CHECK constraints. Check birth_date and expiry_date
 
 CREATE TABLE Member (
     memberID VARCHAR2(6) PRIMARY KEY,
@@ -70,7 +62,6 @@ CREATE TABLE Restaurant (
     CONSTRAINT chk_status CHECK (current_status IN ('Open','Closed','Suspended')),
     CONSTRAINT chk_rating CHECK (average_rating BETWEEN 0 AND 5),
     CONSTRAINT chk_halal CHECK (is_halal IN (0,1))
-    -- considering whether to add the restaurant_category constraint
 );
 
 CREATE TABLE MemberMembership (
@@ -190,11 +181,6 @@ CREATE TABLE OrderDetails (
     FOREIGN KEY (menuitemID) REFERENCES MenuItem(menuitemID)
 );
 
--- ===== END script.sql =====
-
-
--- ===== BEGIN Membership.sql =====
-
 INSERT INTO Membership VALUES ('MS001', 'Basic Monthly', 5.99, 1);
 INSERT INTO Membership VALUES ('MS002', 'Basic Quarterly', 15.99, 3);
 INSERT INTO Membership VALUES ('MS003', 'Basic Yearly', 59.99, 12);
@@ -206,11 +192,6 @@ INSERT INTO Membership VALUES ('MS008', 'Gold Quarterly', 39.99, 3);
 INSERT INTO Membership VALUES ('MS009', 'Gold Yearly', 149.99, 12);
 INSERT INTO Membership VALUES ('MS010', 'Student Special', 29.99, 2);
 commit;
-
--- ===== END Membership.sql =====
-
-
--- ===== BEGIN Member.sql =====
 
 set define off;
 INSERT INTO Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status)VALUES('M001', 'Nickola', 'Mincini', 'Female', '11-Oct-1994', 'uR1*L%qlzo.{%5F', 'nmincini0@ucsd.edu', '911-656-5965', '01-Mar-2025', 'Active');
@@ -281,11 +262,6 @@ INSERT INTO Member (memberid, first_name, last_name, gender, birth_date, passwor
 INSERT INTO Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status)VALUES('M066', 'Ainsley', 'Papis', 'Female', '15-Jan-1992', 'vX0>Dy}Xe#)PG$/', 'apapis1t@bloglovin.com', '391-509-8186', '01-May-2023', 'Active');
 INSERT INTO Member (memberid, first_name, last_name, gender, birth_date, password, email, phoneno, registration_date, account_status)VALUES('M067', 'Leah', 'Trevon', 'Female', '21-Jan-1991', 'mY1(4M1L', 'ltrevon1u@whitehouse.gov', '363-159-9209', '29-Jul-2024', 'Active');
 
--- ===== END Member.sql =====
-
-
--- ===== BEGIN voucher.sql =====
-
 INSERT INTO Voucher VALUES ('V001', 'WELCOME10', 'Percentage', 10, DATE '2026-12-31', 15, 200);
 INSERT INTO Voucher VALUES ('V002', 'SUMMER15', 'Percentage', 15, DATE '2026-08-31', 10, 150);
 INSERT INTO Voucher VALUES ('V003', 'NEWUSER20', 'Percentage', 20, DATE '2027-12-31', 12, 120);
@@ -297,11 +273,6 @@ INSERT INTO Voucher VALUES ('V008', 'LOYALTY10', 'Flat', 10, DATE '2024-01-01', 
 INSERT INTO Voucher VALUES ('V009', 'FLASH18', 'Percentage', 18, DATE '2025-09-01', 25, 17);
 INSERT INTO Voucher VALUES ('V010', 'GYMSTART15', 'Percentage', 15, DATE '2026-06-30', 10, 130);
 INSERT INTO Voucher VALUES ('V011', 'FREESHIP', 'Free Delivery', 0, DATE '2027-11-30', 8, 160);
-
--- ===== END voucher.sql =====
-
-
--- ===== BEGIN Restaurant.sql =====
 
 SET DEFINE OFF;
 
@@ -319,11 +290,6 @@ INSERT INTO Restaurant (restaurantID, restaurant_name, restaurant_category, is_h
 INSERT INTO Restaurant (restaurantID, restaurant_name, restaurant_category, is_halal, location_area, current_status, average_rating) VALUES ('R012', 'Haidilao Hot Pot', 'Chinese', 0, 'Sunway Velocity', 'Closed', 4.90);
 
 COMMIT;
-
--- ===== END Restaurant.sql =====
-
-
--- ===== BEGIN MemberMembership.sql =====
 
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM075', 'M036', 'MS010', '10-Dec-2025', '10-Feb-2026', 'Expired');
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM076', 'M008', 'MS008', '13-Apr-2022', '13-Jul-2022', 'Cancelled');
@@ -590,11 +556,6 @@ INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM337', 'M045', 'MS009', '11-Jan-2020', '11-Jan-2021', 'Expired');
 INSERT INTO MemberMembership (membermembershipid, memberid, membershipid, start_date, end_date, status)VALUES('MM338', 'M047', 'MS010', '08-Jul-2022', '08-Sep-2022', 'Expired');
 commit;
-
--- ===== END MemberMembership.sql =====
-
-
--- ===== BEGIN MemberVoucher.sql =====
 
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV001', 'V010', 'M056', '9-Nov-25', 'Redeemed');
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV002', 'V011', 'M033', '', 'Available');
@@ -985,14 +946,7 @@ INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, 
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV387', 'V009', 'M006', '', 'Expired');
 INSERT INTO MemberVoucher (membervoucherid, voucherid, memberid, redeemed_date, status) VALUES('MV388', 'V008', 'M032', '17-Dec-22', 'Redeemed');
 
--- ===== END MemberVoucher.sql =====
-
-
--- ===== BEGIN menuItem.sql =====
-
 SET DEFINE OFF;
-
--- Restaurant 1: KFJ Fast Food
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT001', 'Signature Fried Chicken (2pcs)', 'Main Course', 0, 0, 'Food', 14.90, 24, 1, 'R001');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT002', 'Signature Fried Chicken (3pcs)', 'Main Course', 0, 1, 'Food', 19.90, 15, 1, 'R001');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT003', 'KFJ Zinger Burger', 'Main Course', 0, 0, 'Food', 12.50, 0, 0, 'R001');
@@ -1005,8 +959,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT010', 'Nuggets (6pcs)', 'Snack', 1, 0, 'Food', 8.50, 0, 0, 'R001');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT011', 'KFJ Twister Wrap', 'Main Course', 0, 0, 'Food', 11.00, 13, 1, 'R001');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT012', 'Spicy Popcorn Chicken', 'Snack', 0, 0, 'Food', 9.50, 21, 1, 'R001');
-
--- Restaurant 2: Village Park Restaurant
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT013', 'Nasi Lemak Ayam Goreng', 'Main Course', 0, 1, 'Food', 12.00, 61, 1, 'R002');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT014', 'Nasi Lemak Biasa', 'Main Course', 1, 0, 'Food', 5.00, 76, 1, 'R002');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT015', 'Ayam Goreng Berempah', 'Side Dish', 0, 0, 'Food', 7.50, 0, 0, 'R002');
@@ -1015,8 +967,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT018', 'Roti Bakar Kaya', 'Snack', 1, 0, 'Food', 4.50, 34, 1, 'R002');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT019', 'Nasi Dagang', 'Main Course', 0, 0, 'Food', 10.50, 14, 1, 'R002');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT020', 'Milo Ais', 'Beverage', 1, 0, 'Drink', 4.00, 91, 1, 'R002');
-
--- Restaurant 3: Din Tai Fung
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT021', 'Xiao Long Bao (6pcs)', 'Dim Sum', 0, 0, 'Food', 18.50, 49, 1, 'R003');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT022', 'Shrimp Fried Rice', 'Main Course', 0, 0, 'Food', 24.00, 22, 1, 'R003');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT023', 'Spicy Shrimp Wonton', 'Appetizer', 0, 1, 'Food', 16.00, 0, 0, 'R003');
@@ -1025,8 +975,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT026', 'Egg Fried Rice', 'Main Course', 1, 0, 'Food', 14.50, 51, 1, 'R003');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT027', 'Fried Chicken', 'Main Course', 0, 0, 'Food', 17.00, 17, 1, 'R003');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT028', 'Jasmine Tea (Pot)', 'Beverage', 0, 0, 'Drink', 8.00, 152, 1, 'R003');
-
--- Restaurant 4: Sushi Jiro
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT029', 'Salmon Nigiri (2pcs)', 'Sushi', 1, 0, 'Food', 3.38, 81, 1, 'R004');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT030', 'Tuna Maki', 'Sushi', 1, 0, 'Food', 3.38, 0, 0, 'R004');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT031', 'Chawanmushi', 'Side Dish', 1, 0, 'Food', 3.38, 39, 1, 'R004');
@@ -1035,8 +983,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT034', 'California Roll', 'Sushi', 1, 0, 'Food', 3.38, 57, 1, 'R004');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT035', 'Ebi Tempura (3pcs)', 'Side Dish', 0, 0, 'Food', 12.90, 11, 1, 'R004');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT036', 'Hot Green Tea', 'Beverage', 1, 0, 'Drink', 2.00, 203, 1, 'R004');
-
--- Restaurant 5: Murni Discovery
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT037', 'Nasi Goreng Meletup', 'Main Course', 0, 1, 'Food', 14.00, 36, 1, 'R005');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT038', 'Roti Hawaii', 'Main Course', 0, 0, 'Food', 11.00, 27, 1, 'R005');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT039', 'Mee Raja', 'Main Course', 0, 0, 'Food', 13.50, 0, 0, 'R005');
@@ -1045,8 +991,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT042', 'Chicken Chop', 'Main Course', 0, 0, 'Food', 16.90, 16, 1, 'R005');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT043', 'Roti Tissue', 'Dessert', 1, 0, 'Food', 6.00, 38, 1, 'R005');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT044', 'Teh O Ais Limau', 'Beverage', 1, 0, 'Drink', 3.50, 132, 1, 'R005');
-
--- Restaurant 6: Uncle Don's
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT045', 'Grilled Chicken Chop', 'Main Course', 0, 1, 'Food', 18.90, 20, 1, 'R006');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT046', 'Spaghetti Bolognese', 'Main Course', 0, 0, 'Food', 16.50, 18, 1, 'R006');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT047', 'Wild Mushroom Soup', 'Soup', 1, 0, 'Food', 8.90, 0, 0, 'R006');
@@ -1055,8 +999,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT050', 'Classic Pork Burger', 'Main Course', 0, 0, 'Food', 17.50, 9, 1, 'R006');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT051', 'Caesar Salad', 'Appetizer', 0, 0, 'Food', 14.90, 26, 1, 'R006');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT052', 'Iced Lemon Tea', 'Beverage', 1, 0, 'Drink', 6.50, 103, 1, 'R006');
-
--- Restaurant 7: Banana Bro
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT053', 'Craving Set (Basic Meal)', 'Combo', 1, 1, 'Food', 12.90, 66, 1, 'R007');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT054', 'Chicken Varuval', 'Side Dish', 0, 0, 'Food', 9.90, 32, 1, 'R007');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT055', 'Mutton Curry', 'Side Dish', 0, 0, 'Food', 14.90, 0, 0, 'R007');
@@ -1065,8 +1007,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT058', 'Masala Tea', 'Beverage', 1, 0, 'Drink', 5.50, 97, 1, 'R007');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT059', 'Extra Papadam', 'Side Dish', 1, 0, 'Food', 2.00, 205, 1, 'R007');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT060', 'Chicken Tikka Masala', 'Side Dish', 0, 0, 'Food', 11.90, 7, 1, 'R007');
-
--- Restaurant 8: KyoChon 1991
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT061', 'Soy Garlic Series (8pcs)', 'Main Course', 0, 1, 'Food', 24.90, 31, 1, 'R008');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT062', 'Red Pepper Series (8pcs)', 'Main Course', 0, 0, 'Food', 24.90, 0, 0, 'R008');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT063', 'Honey Series (8pcs)', 'Main Course', 0, 1, 'Food', 26.90, 28, 1, 'R008');
@@ -1075,8 +1015,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT066', 'Kimchi Fried Rice', 'Main Course', 0, 0, 'Food', 16.90, 17, 1, 'R008');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT067', 'Sparkling Yuza Tea', 'Beverage', 0, 0, 'Drink', 10.90, 54, 1, 'R008');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT068', 'Cass Beer (Bottle)', 'Beverage', 0, 0, 'Drink', 18.00, 37, 1, 'R008');
-
--- Restaurant 9: The Chicken Rice Shop
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT069', 'Steamed Chicken Rice', 'Main Course', 1, 1, 'Food', 13.90, 82, 1, 'R009');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT070', 'Roasted Chicken Rice', 'Main Course', 1, 1, 'Food', 13.90, 73, 1, 'R009');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT071', 'Pai Tee (Regular)', 'Appetizer', 0, 0, 'Food', 8.90, 35, 1, 'R009');
@@ -1085,8 +1023,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT074', 'Hainanese Coffee', 'Beverage', 1, 0, 'Drink', 4.90, 89, 1, 'R009');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT075', 'Fresh Soya Bean', 'Beverage', 1, 0, 'Drink', 4.50, 113, 1, 'R009');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT076', 'Penang Fruit Rojak', 'Appetizer', 0, 0, 'Food', 10.90, 25, 1, 'R009');
-
--- Restaurant 10: Nasi Lemak Antarabangsa
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT077', 'Nasi Lemak Sambal Sotong', 'Main Course', 0, 1, 'Food', 11.50, 48, 1, 'R010');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT078', 'Nasi Lemak Rendang Daging', 'Main Course', 0, 0, 'Food', 12.50, 30, 1, 'R010');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT079', 'Nasi Lemak Paru', 'Main Course', 0, 0, 'Food', 10.00, 0, 0, 'R010');
@@ -1095,8 +1031,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT082', 'Teh O Ais', 'Beverage', 1, 0, 'Drink', 2.50, 143, 1, 'R010');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT083', 'Sirap Bandung', 'Beverage', 1, 0, 'Drink', 3.50, 94, 1, 'R010');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT084', 'Nasi Lemak Kerang', 'Main Course', 0, 0, 'Food', 11.00, 24, 1, 'R010');
-
--- Restaurant 11: Burger Lab
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT085', 'Beautiful Mess Burger', 'Main Course', 0, 1, 'Food', 22.90, 13, 1, 'R011');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT086', 'A Plus Burger', 'Main Course', 0, 0, 'Food', 20.90, 16, 1, 'R011');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT087', 'Fat Elvis Burger', 'Main Course', 0, 0, 'Food', 21.90, 0, 0, 'R011');
@@ -1105,8 +1039,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT090', 'Sweet Potato Fries', 'Side Dish', 1, 0, 'Food', 10.90, 43, 1, 'R011');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT091', 'Onion Rings', 'Side Dish', 1, 0, 'Food', 9.90, 50, 1, 'R011');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT092', 'Mint Lemonade', 'Beverage', 0, 0, 'Drink', 8.50, 67, 1, 'R011');
-
--- Restaurant 12: Haidilao Hot Pot
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT093', 'Tomato Soup Base', 'Soup', 0, 0, 'Food', 20.00, 104, 1, 'R012');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT094', 'Spicy Sichuan Soup Base', 'Soup', 0, 0, 'Food', 24.00, 98, 1, 'R012');
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT095', 'Signature Sliced Beef', 'Main Course', 0, 1, 'Food', 38.00, 33, 1, 'R012');
@@ -1117,11 +1049,6 @@ INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_s
 INSERT INTO MenuItem (menuitemID, item_name, item_category, is_budget_meal, is_super_deal, type, price, stock_quantity, availability, restaurantID) VALUES ('MT100', 'Sour Plum Juice (Jug)', 'Beverage', 0, 0, 'Drink', 15.00, 46, 1, 'R012');
 
 COMMIT;
-
--- ===== END menuItem.sql =====
-
-
--- ===== BEGIN Order.sql =====
 
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O001', '', 'M023', '11-Mar-20', 'Cancelled', '53.3', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O002', 'MV259', 'M036', '22-Apr-20', 'Completed', '28', 'Delivery');
@@ -1571,11 +1498,6 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O446', '', 'M063', '2-Nov-20', 'Completed', '108.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O447', 'MV069', 'M051', '25-Oct-21', 'Completed', '133', 'Self-Pickup');
 
--- ===== END Order.sql =====
-
-
--- ===== BEGIN Payment.sql =====
-
 INSERT INTO Payment (paymentID, payment_method, payment_status, payment_amount, payment_date, orderID) VALUES ('P001', 'Credit / Debit Card', 'Completed', '62.26', '11-Mar-20', 'O001');
 INSERT INTO Payment (paymentID, payment_method, payment_status, payment_amount, payment_date, orderID) VALUES ('P002', 'Credit / Debit Card', 'Completed', '28.77', '22-Apr-20', 'O002');
 INSERT INTO Payment (paymentID, payment_method, payment_status, payment_amount, payment_date, orderID) VALUES ('P003', 'Touch ''n Go', 'Completed', '30.16', '7-Aug-22', 'O003');
@@ -2023,13 +1945,6 @@ INSERT INTO Payment (paymentID, payment_method, payment_status, payment_amount, 
 INSERT INTO Payment (paymentID, payment_method, payment_status, payment_amount, payment_date, orderID) VALUES ('P446', 'Touch ''n Go', 'Completed', '114.39', '2-Nov-20', 'O446');
 INSERT INTO Payment (paymentID, payment_method, payment_status, payment_amount, payment_date, orderID) VALUES ('P447', 'Credit / Debit Card', 'Completed', '123.00', '25-Oct-21', 'O447');
 
-
-
--- ===== END Payment.sql =====
-
-
--- ===== BEGIN DeliveryService.sql =====
-
 INSERT INTO DeliveryService (deliveryserviceid, company_name, delivery_charge, pickup_time, delivery_time, delivery_address, delivery_status, orderid) VALUES ('DS001', 'Lalamove', '8.96', TO_TIMESTAMP('2020-03-11 00:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2020-03-11 01:14:00', 'YYYY-MM-DD HH24:MI:SS'), '"No. 3, Jalan Melati, Taman Desa"', 'Completed', 'O001');
 INSERT INTO DeliveryService (deliveryserviceid, company_name, delivery_charge, pickup_time, delivery_time, delivery_address, delivery_status, orderid) VALUES ('DS002', 'FoodPanda', '5.77', TO_TIMESTAMP('2020-04-22 00:23:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2020-04-22 01:02:00', 'YYYY-MM-DD HH24:MI:SS'), '"No. 141, Jalan Perdana, Taman Bahagia"', 'Completed', 'O002');
 INSERT INTO DeliveryService (deliveryserviceid, company_name, delivery_charge, pickup_time, delivery_time, delivery_address, delivery_status, orderid) VALUES ('DS003', 'GrabFood', '9.52', TO_TIMESTAMP('2022-08-07 00:22:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2022-08-07 01:22:00', 'YYYY-MM-DD HH24:MI:SS'), '"No. 93, Jalan Melati, Taman Melawati"', 'Completed', 'O003');
@@ -2335,11 +2250,6 @@ INSERT INTO DeliveryService (deliveryserviceid, company_name, delivery_charge, p
 INSERT INTO DeliveryService (deliveryserviceid, company_name, delivery_charge, pickup_time, delivery_time, delivery_address, delivery_status, orderid) VALUES ('DS303', 'GrabFood', '5.69', TO_TIMESTAMP('2020-03-11 00:28:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2020-03-11 01:08:00', 'YYYY-MM-DD HH24:MI:SS'), '"No. 177, Jalan Makmur, Taman Bahagia"', 'Completed', 'O445');
 INSERT INTO DeliveryService (deliveryserviceid, company_name, delivery_charge, pickup_time, delivery_time, delivery_address, delivery_status, orderid) VALUES ('DS304', 'GrabFood', '5.89', TO_TIMESTAMP('2020-11-02 00:26:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2020-11-02 01:11:00', 'YYYY-MM-DD HH24:MI:SS'), '"No. 288, Jalan Cempaka, Taman Desa"', 'Completed', 'O446');
 
--- ===== END DeliveryService.sql =====
-
-
--- ===== BEGIN DeliveryRating.sql =====
-
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR001', '3', 'Okay, nothing special.', TO_DATE('2020-04-22 14:46:58', 'YYYY_MM_DD HH24:MI:SS'), 'DS002');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR002', '3', 'Delivery instructions were completely ignored.', TO_DATE('2022-08-08 16:08:41', 'YYYY_MM_DD HH24:MI:SS'), 'DS003');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR003', '2', 'Delivery instructions were completely ignored.', TO_DATE('2025-10-05 00:06:38', 'YYYY_MM_DD HH24:MI:SS'), 'DS006');
@@ -2538,11 +2448,6 @@ INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_d
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR196', '5', 'Fast and fresh.', TO_DATE('2025-03-31 01:51:45', 'YYYY_MM_DD HH24:MI:SS'), 'DS301');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR197', '4', 'Best meal I''ve had all week!', TO_DATE('2020-03-12 10:41:27', 'YYYY_MM_DD HH24:MI:SS'), 'DS303');
 INSERT INTO DeliveryRating(delivery_rating_id, rating_score, "comment", rating_date, deliveryserviceid) VALUES ('DR198', '2', 'Food was cold by the time it arrived.', TO_DATE('2020-11-02 08:24:02', 'YYYY_MM_DD HH24:MI:SS'), 'DS304');
-
--- ===== END DeliveryRating.sql =====
-
-
--- ===== BEGIN FoodRating.sql =====
 
 INSERT INTO FoodRating (food_rating_id, rating_score, "comment", rating_date, orderid) VALUES('FR001', '2', 'Food arrived slightly cold.', '11-Mar-20', 'O001');
 INSERT INTO FoodRating (food_rating_id, rating_score, "comment", rating_date, orderid) VALUES('FR002', '5', 'Perfect as always!', '22-Apr-20', 'O002');
@@ -2922,11 +2827,6 @@ INSERT INTO FoodRating (food_rating_id, rating_score, "comment", rating_date, or
 INSERT INTO FoodRating (food_rating_id, rating_score, "comment", rating_date, orderid) VALUES('FR376', '5', 'Perfect as always!', '19-Mar-22', 'O397');
 INSERT INTO FoodRating (food_rating_id, rating_score, "comment", rating_date, orderid) VALUES('FR377', '1', 'Would not order again.', '6-Feb-24', 'O398');
 INSERT INTO FoodRating (food_rating_id, rating_score, "comment", rating_date, orderid) VALUES('FR378', '2', 'Not exactly what I expected.', '17-Apr-25', 'O400');
-
--- ===== END FoodRating.sql =====
-
-
--- ===== BEGIN OrderDetails.sql =====
 
 INSERT INTO OrderDetails (orderdetailsid, orderid, menuitemid, quantity, price_at_time_ordered, subtotal) VALUES('OD001', 'O001', 'MT066', '2', '16.9', '33.8');
 INSERT INTO OrderDetails (orderdetailsid, orderid, menuitemid, quantity, price_at_time_ordered, subtotal) VALUES('OD002', 'O001', 'MT072', '3', '6.5', '19.5');
@@ -4097,6 +3997,4 @@ INSERT INTO OrderDetails (orderdetailsid, orderid, menuitemid, quantity, price_a
 INSERT INTO OrderDetails (orderdetailsid, orderid, menuitemid, quantity, price_at_time_ordered, subtotal) VALUES('OD1167', 'O447', 'MT068', '4', '18', '72');
 INSERT INTO OrderDetails (orderdetailsid, orderid, menuitemid, quantity, price_at_time_ordered, subtotal) VALUES('OD1168', 'O447', 'MT003', '4', '12.5', '50');
 INSERT INTO OrderDetails (orderdetailsid, orderid, menuitemid, quantity, price_at_time_ordered, subtotal) VALUES('OD1169', 'O447', 'MT084', '1', '11', '11');
-
--- ===== END OrderDetails.sql =====
 
