@@ -15,18 +15,6 @@ DROP TABLE Restaurant CASCADE CONSTRAINTS;
 
 -- CREATE TABLE QUERIES
 
-CREATE TABLE Membership (
-    membershipID VARCHAR2(6) PRIMARY KEY,
-    memberID VARCHAR2(6) NOT NULL,
-    fee_paid DECIMAL(10, 2),
-    membership_status VARCHAR(20),
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
-    FOREIGN KEY (memberID) REFERENCES Member(memberID),
-    CONSTRAINT chk_valid_dates CHECK (end_date > start_date),
-    CONSTRAINT chk_membership_status CHECK (membership_status IN ('Active', 'Cancelled', 'Expired'))
-);
-
 -- Use triggers instead of CHECK constraints. Check birth_date and expiry_date
 
 CREATE TABLE Member (
@@ -44,6 +32,18 @@ CREATE TABLE Member (
     CONSTRAINT chk_account_status CHECK (account_status IN ('Active','Inactive','Suspended')),
     CONSTRAINT chk_email_format CHECK (REGEXP_LIKE(email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')),
     CONSTRAINT chk_phone_format CHECK (REGEXP_LIKE(phoneNo, '^[0-9]{3}-[0-9]{3}-[0-9]{4}$'))
+);
+
+CREATE TABLE Membership (
+    membershipID VARCHAR2(6) PRIMARY KEY,
+    memberID VARCHAR2(6) NOT NULL,
+    fee_paid DECIMAL(10, 2),
+    membership_status VARCHAR(20),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    FOREIGN KEY (memberID) REFERENCES Member(memberID),
+    CONSTRAINT chk_valid_dates CHECK (end_date > start_date),
+    CONSTRAINT chk_membership_status CHECK (membership_status IN ('Active', 'Cancelled', 'Expired'))
 );
 
 CREATE TABLE Voucher (
