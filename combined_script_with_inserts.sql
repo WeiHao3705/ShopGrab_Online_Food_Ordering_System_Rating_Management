@@ -1142,7 +1142,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O064', 'MV115', 'M044', '17-Jan-21', 'Cancelled', '52', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O065', '', 'M040', '28-Jun-21', 'Completed', '142.7', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O066', 'MV223', 'M034', '6-Dec-24', 'Completed', '198.6', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O067', 'MV293', 'M059', '11-Apr-26', 'Completed', '89.4', 'Self-Pickup');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O067', 'MV293', 'M059', '11-Apr-23', 'Completed', '89.4', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O068', 'MV237', 'M045', '26-Feb-22', 'Completed', '98.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O069', 'MV123', 'M052', '20-Oct-20', 'Completed', '14', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O070', '', 'M029', '1-Sep-25', 'Completed', '65.5', 'Self-Pickup');
@@ -1181,7 +1181,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O103', 'MV287', 'M065', '17-Dec-23', 'Cancelled', '167.1', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O104', 'MV139', 'M030', '31-Dec-22', 'Completed', '58.9', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O105', '', 'M065', '2-Jul-23', 'Completed', '58', 'Self-Pickup');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O106', 'MV185', 'M021', '28-Apr-26', 'Cancelled', '145.2', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O106', 'MV185', 'M021', '28-Apr-23', 'Cancelled', '145.2', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O107', '', 'M061', '12-Jun-22', 'Cancelled', '150.1', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O108', '', 'M022', '17-May-21', 'Completed', '49.64', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O109', '', 'M045', '3-Mar-24', 'Completed', '48.52', 'Delivery');
@@ -1236,7 +1236,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O158', 'MV277', 'M027', '6-Nov-20', 'Completed', '81.6', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O159', '', 'M042', '27-Nov-23', 'Cancelled', '135.8', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O160', '', 'M055', '16-Aug-24', 'Completed', '29.5', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O161', 'MV078', 'M016', '12-Apr-26', 'Completed', '143.72', 'Self-Pickup');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O161', 'MV078', 'M016', '12-Apr-25', 'Completed', '143.72', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O162', '', 'M009', '6-May-24', 'Completed', '29.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O163', 'MV122', 'M004', '5-Dec-22', 'Completed', '62.9', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O164', 'MV174', 'M012', '29-Jan-24', 'Cancelled', '79.8', 'Delivery');
@@ -1253,11 +1253,11 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O175', 'MV108', 'M020', '14-Sep-24', 'Cancelled', '125.88', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O176', '', 'M036', '13-Sep-24', 'Completed', '87.1', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O177', '', 'M040', '20-Sep-25', 'Completed', '86', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O178', '', 'M064', '30-Apr-26', 'Completed', '129.5', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O178', '', 'M064', '30-Apr-20', 'Completed', '129.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O179', 'MV049', 'M013', '12-Sep-22', 'Completed', '50.7', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O180', 'MV295', 'M066', '8-Jan-24', 'Completed', '22.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O181', 'MV367', 'M008', '9-Nov-23', 'Completed', '41.4', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O182', '', 'M028', '20-Apr-26', 'Completed', '73', 'Self-Pickup');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O182', '', 'M028', '20-Apr-24', 'Completed', '73', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O183', 'MV136', 'M060', '14-Dec-21', 'Completed', '47.32', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O184', 'MV357', 'M012', '22-Aug-23', 'Completed', '84.26', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O185', '', 'M001', '22-Jul-21', 'Cancelled', '42.76', 'Self-Pickup');
@@ -1278,11 +1278,11 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O200', 'MV152', 'M005', '17-Oct-20', 'Cancelled', '110', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O201', 'MV039', 'M036', '2-May-25', 'Completed', '178.1', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O202', '', 'M032', '22-Mar-23', 'Cancelled', '165', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O203', '', 'M063', '7-Apr-26', 'Completed', '40.4', 'Self-Pickup');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O203', '', 'M063', '7-Apr-20', 'Completed', '40.4', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O204', '', 'M007', '3-Jul-25', 'Completed', '135', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O205', '', 'M029', '1-Dec-23', 'Completed', '84.3', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O206', 'MV358', 'M062', '1-Jun-23', 'Completed', '182.5', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O207', 'MV172', 'M047', '24-Apr-26', 'Completed', '120.5', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O207', 'MV172', 'M047', '24-Apr-21', 'Completed', '120.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O208', 'MV081', 'M032', '14-Oct-22', 'Cancelled', '55.6', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O209', '', 'M031', '28-Feb-21', 'Completed', '49.7', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O210', 'MV365', 'M053', '15-Feb-21', 'Completed', '137.5', 'Self-Pickup');
@@ -1296,7 +1296,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O218', 'MV224', 'M033', '14-Mar-24', 'Cancelled', '113', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O219', '', 'M035', '18-Sep-20', 'Cancelled', '186', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O220', 'MV003', 'M063', '3-Jan-25', 'Completed', '102', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O221', 'MV288', 'M017', '11-Apr-26', 'Completed', '13.38', 'Self-Pickup');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O221', 'MV288', 'M017', '11-Apr-20', 'Completed', '13.38', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O222', '', 'M050', '15-Aug-20', 'Cancelled', '113.62', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O223', '', 'M050', '22-Dec-25', 'Completed', '100.5', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O224', '', 'M001', '14-Jan-21', 'Completed', '20.5', 'Delivery');
@@ -1350,7 +1350,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O272', 'MV131', 'M017', '30-May-23', 'Cancelled', '51.12', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O273', '', 'M067', '26-Sep-24', 'Cancelled', '50.36', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O274', 'MV064', 'M006', '31-Mar-22', 'Cancelled', '45', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O275', 'MV366', 'M039', '20-Apr-26', 'Completed', '27.14', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O275', 'MV366', 'M039', '20-Apr-22', 'Completed', '27.14', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O276', 'MV166', 'M023', '3-Nov-25', 'Cancelled', '198.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O277', '', 'M025', '26-May-21', 'Completed', '45.6', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O278', '', 'M054', '21-Dec-22', 'Cancelled', '80', 'Delivery');
@@ -1365,7 +1365,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O287', 'MV385', 'M033', '4-Oct-20', 'Cancelled', '84.6', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O288', '', 'M032', '28-Dec-22', 'Completed', '27.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O289', '', 'M005', '18-Mar-23', 'Completed', '147.1', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O290', '', 'M050', '6-Apr-26', 'Completed', '30.5', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O290', '', 'M050', '6-Apr-22', 'Completed', '30.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O291', 'MV023', 'M020', '17-Apr-20', 'Completed', '44.8', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O292', 'MV363', 'M002', '7-Jun-20', 'Completed', '88.9', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O293', 'MV034', 'M055', '14-Sep-20', 'Completed', '85.1', 'Delivery');
@@ -1435,7 +1435,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O357', 'MV283', 'M054', '1-Oct-25', 'Completed', '92.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O358', 'MV025', 'M011', '14-Jun-21', 'Completed', '143.4', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O359', 'MV315', 'M029', '15-May-21', 'Cancelled', '129.1', 'Self-Pickup');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O360', 'MV272', 'M033', '9-Apr-26', 'Completed', '180.8', 'Self-Pickup');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O360', 'MV272', 'M033', '9-Apr-23', 'Completed', '180.8', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O361', 'MV309', 'M043', '21-May-23', 'Completed', '37.18', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O362', 'MV280', 'M037', '5-Jun-20', 'Cancelled', '113.4', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O363', 'MV348', 'M037', '17-Feb-26', 'Completed', '109.1', 'Delivery');
@@ -1453,7 +1453,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O375', '', 'M003', '17-Feb-20', 'Completed', '82.7', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O376', '', 'M064', '13-Sep-24', 'Completed', '222', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O377', 'MV084', 'M016', '23-Jul-20', 'Cancelled', '81.7', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O378', 'MV061', 'M023', '1-Apr-26', 'Cancelled', '131.5', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O378', 'MV061', 'M023', '1-Apr-21', 'Cancelled', '131.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O379', '', 'M034', '11-Aug-25', 'Completed', '50', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O380', 'MV160', 'M010', '10-Apr-22', 'Cancelled', '139.6', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O381', 'MV083', 'M008', '18-Nov-23', 'Completed', '136.4', 'Delivery');
@@ -1462,7 +1462,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O384', 'MV383', 'M011', '5-Sep-20', 'Completed', '126.1', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O385', 'MV088', 'M029', '14-Aug-20', 'Cancelled', '136', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O386', 'MV380', 'M054', '17-Aug-22', 'Cancelled', '169.8', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O387', 'MV302', 'M053', '7-Apr-26', 'Cancelled', '129.7', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O387', 'MV302', 'M053', '7-Apr-20', 'Cancelled', '129.7', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O388', 'MV208', 'M048', '14-Jun-25', 'Cancelled', '54.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O389', 'MV048', 'M044', '18-Oct-21', 'Completed', '41', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O390', 'MV121', 'M045', '8-Oct-20', 'Completed', '134.8', 'Delivery');
@@ -1492,7 +1492,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O414', 'MV018', 'M057', '11-Jan-21', 'Completed', '61.62', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O415', 'MV116', 'M043', '29-Mar-24', 'Cancelled', '43', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O416', 'MV323', 'M012', '4-Dec-25', 'Completed', '65', 'Self-Pickup');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O417', '', 'M031', '17-Apr-26', 'Completed', '117', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O417', '', 'M031', '17-Apr-20', 'Completed', '117', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O418', '', 'M006', '13-Feb-20', 'Cancelled', '33', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O419', 'MV299', 'M040', '20-Sep-23', 'Completed', '40', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O420', '', 'M057', '30-Jun-20', 'Completed', '137.5', 'Delivery');
@@ -1502,7 +1502,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O424', 'MV187', 'M061', '12-Aug-21', 'Cancelled', '131', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O425', 'MV256', 'M057', '9-Feb-24', 'Completed', '94.4', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O426', 'MV107', 'M002', '14-Jul-21', 'Completed', '66', 'Self-Pickup');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O427', 'MV147', 'M049', '28-Apr-26', 'Completed', '80.5', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O427', 'MV147', 'M049', '28-Apr-24', 'Completed', '80.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O428', 'MV346', 'M055', '27-Oct-23', 'Cancelled', '136.5', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O429', '', 'M030', '28-Feb-22', 'Cancelled', '200', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O430', '', 'M003', '4-Mar-26', 'Completed', '149.4', 'Self-Pickup');
@@ -1513,7 +1513,7 @@ INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O435', '', 'M021', '29-Aug-24', 'Cancelled', '47', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O436', 'MV355', 'M011', '27-Oct-22', 'Completed', '69.8', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O437', 'MV022', 'M008', '8-Sep-21', 'Completed', '45.5', 'Delivery');
-INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O438', 'MV314', 'M008', '29-Apr-26', 'Cancelled', '28.9', 'Delivery');
+INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O438', 'MV314', 'M008', '29-Apr-22', 'Cancelled', '28.9', 'Delivery');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O439', 'MV251', 'M024', '23-May-25', 'Completed', '195.6', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O440', '', 'M025', '25-Jan-26', 'Cancelled', '26', 'Self-Pickup');
 INSERT INTO Orders (orderid, membervoucherid, memberid, order_date, order_status, total_amount, delivery_method)VALUES('O441', '', 'M036', '18-Aug-21', 'Cancelled', '65.5', 'Delivery');
